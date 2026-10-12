@@ -1,0 +1,14 @@
+#!/bin/bash
+# Start Backlog Refinery and open it. Idempotent: reuses a running server.
+set -uo pipefail
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+[ -f "$ROOT/config.json" ] || { echo "No config.json. Copy config.example.json to config.json and fill it in. See README.md."; exit 1; }
+PORT="${PORT:-$(node -p "JSON.parse(require('fs').readFileSync('$ROOT/config.json','utf8')).port || 4380" 2>/dev/null || echo 4380)}"
+LOG="${REFINERY_LOG:-$HOME/.backlog-refinery.log}"
+if ! curl -fsS "http://localhost:$PORT/healthz" >/dev/null 2>&1; then
+  gh auth status >/dev/null 2>&1 || { echo "gh is not authenticated. Run: gh auth login"; exit 1; }
+  ( cd "$ROOT" && PORT="$PORT" nohup node server.mjs >> "$LOG" 2>&1 & )
+  for _ in $(seq 1 30); do curl -fsS "http://localhost:$PORT/healthz" >/dev/null 2>&1 && break; sleep 0.3; done
+fi
+open "http://localhost:$PORT" 2>/dev/null || xdg-open "http://localhost:$PORT" 2>/dev/null || echo "Open http://localhost:$PORT"

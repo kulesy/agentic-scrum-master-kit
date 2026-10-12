@@ -1,0 +1,10 @@
+{
+  "name": "backlog-refinery",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Work through a GitHub Projects v2 triage column one item at a time, with agent-drafted refinements you edit before anything is applied.",
+  "author": "Eli Kent",
+  "type": "module",
+  "scripts": { "start": "node server.mjs" },
+  "engines": { "node": ">=20" }
+}

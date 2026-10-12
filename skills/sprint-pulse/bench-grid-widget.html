@@ -1,0 +1,37 @@
+<!-- Template for the sprint-pulse day grid (Step 2b) as an HTML widget. If your environment has a widget renderer
+     (for example the visualize show_widget tool), load its guidance first. The var(--x, fallback) colours let the file
+     also open as a plain page.
+     Cell classes: in (no booking) | cl (client, letter C) | lv (leave, letter L) | off (not a project day: dashed border, no fill, the word off).
+     A plain dash was not visible enough as a non-project day, hence the dashed outline plus the word.
+     Columns: name, then this week's remaining days, a 12px separator, then next week's days. Adjust the
+     grid-template-columns repeat() counts to the number of days in each week. Never put a client name in it. -->
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Day-by-day availability of the team from DAY_FROM to DAY_TO: one sentence summary.</h2>
+<style>
+.g{display:grid;grid-template-columns:130px repeat(3,1fr) 12px repeat(5,1fr);gap:3px;align-items:center;font-size:13px}
+.h{font-size:12px;color:var(--text-muted,#6b6b6b);text-align:center;padding:2px 0}
+.n{color:var(--text-primary,#1a1a1a);padding-right:8px;white-space:nowrap}
+.c{height:30px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500}
+.in{background:var(--surface-2,#f3f3f3);border:0.5px solid var(--border,#d0d0d0);color:var(--text-muted,#6b6b6b)}
+.cl{background:var(--bg-accent,#dbeafe);color:var(--text-accent,#1e40af)}
+.lv{background:var(--bg-danger,#fee2e2);color:var(--text-danger,#991b1b)}
+.off{background:transparent;border:1px dashed var(--border-stronger,#888);color:var(--text-muted,#6b6b6b);font-weight:400}
+.sep{width:12px}
+.lg{display:flex;gap:16px;font-size:12px;color:var(--text-secondary,#4a4a4a);margin-top:12px;flex-wrap:wrap}
+.lg span{display:flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block;box-sizing:border-box}
+</style>
+<div style="padding:0.5rem 0 0;">
+<div style="font-size:13px;color:var(--text-secondary,#4a4a4a);margin-bottom:8px;">Sprint N window, DAY_FROM to DAY_TO</div>
+<div class="g">
+  <div></div><div class="h">Wed 9</div><div class="h">Thu 10</div><div class="h">Fri 11</div><div class="sep"></div><div class="h">Mon 14</div><div class="h">Tue 15</div><div class="h">Wed 16</div><div class="h">Thu 17</div><div class="h">Fri 18</div>
+  <div class="n">Dev A</div><div class="c cl">C</div><div class="c cl">C</div><div class="c cl">C</div><div class="sep"></div><div class="c in"></div><div class="c in"></div><div class="c cl">C</div><div class="c cl">C</div><div class="c cl">C</div>
+  <div class="n">Dev B</div><div class="c off">off</div><div class="c in"></div><div class="c in"></div><div class="sep"></div><div class="c off">off</div><div class="c off">off</div><div class="c off">off</div><div class="c in"></div><div class="c in"></div>
+  <div class="n">Dev C</div><div class="c in"></div><div class="c in"></div><div class="c lv">L</div><div class="sep"></div><div class="c lv">L</div><div class="c in"></div><div class="c in"></div><div class="c in"></div><div class="c in"></div>
+</div>
+<div class="lg">
+  <span><span class="sw" style="background:var(--surface-2,#f3f3f3);border:0.5px solid var(--border,#d0d0d0)"></span>In</span>
+  <span><span class="sw" style="background:var(--bg-accent,#dbeafe)"></span>C, on client</span>
+  <span><span class="sw" style="background:var(--bg-danger,#fee2e2)"></span>L, leave</span>
+  <span><span class="sw" style="background:transparent;border:1px dashed var(--border-stronger,#888)"></span>off, not a project day</span>
+</div>
+</div>

@@ -1,0 +1,35 @@
+{
+  "owner": "your-org-or-user",
+  "projectNumber": 1,
+  "projectId": "project-node-id",
+  "triageStatus": "Needs Triage",
+  "notReadyStatus": "Backlog - Not Ready",
+  "statuses": [
+    "Needs Triage",
+    "Backlog - Not Ready",
+    "Backlog - Ready",
+    "In progress"
+  ],
+  "fields": {
+    "status": "status-field-id",
+    "estimate": "estimate-field-id"
+  },
+  "statusOptions": {
+    "needsTriage": "option-id",
+    "notReady": "option-id",
+    "ready": "option-id",
+    "done": "option-id",
+    "wontDo": "option-id"
+  },
+  "port": 4380,
+  "boardCacheMinutes": 10,
+  "dor": {
+    "gitmoji": false,
+    "evidence": false
+  },
+  "stage": {
+    "repos": [],
+    "hideLabels": ["security"],
+    "ids": []
+  }
+}
