@@ -15,12 +15,6 @@ Every piece below follows that rule.
 
 ## What is here
 
-| Demo in the talk | When it runs | What it does | Where I sit | In this repo |
-|---|---|---|---|---|
-| 1. Sprint Readiness | Before planning | Drafts each backlog item against the Definition of Ready | I accept or skip every item | [backlog-refinery/](backlog-refinery/) and [skills/sprint-readiness/](skills/sprint-readiness/) |
-| 2. Sprint Pulse | Every weekday morning | Reads the board and who is on the project, and tells me what changed | Asleep. It only reads | [skills/sprint-pulse/](skills/sprint-pulse/) |
-| 3. Sprint Review | End of sprint | Drafts the review and the forecast into a TinaCMS site | I edit it in TinaCMS and send it | The site starter: https://github.com/tinacms/sprint-review-starter |
-
 ### Backlog Refinery
 
 A small Node app that shows a GitHub Projects board's triage column one card at a time. Each card carries an agent's draft: an estimate, a priority, acceptance criteria and a better title. I edit the draft, then accept or skip it. The app writes decisions to disk and never touches GitHub. A Claude session applies the plan afterwards, with me watching. See [backlog-refinery/README.md](backlog-refinery/README.md).
@@ -32,10 +26,6 @@ Audits the items your team has already marked ready and reports which ones are m
 ### Sprint Pulse skill
 
 The morning check. It compares the board with yesterday and stays quiet when nothing changed. When something did, it sends one report covering refinement, who is on the project day by day, the burnup and the next steps, each with an owner.
-
-### The sprint review site
-
-A Next.js and TinaCMS starter where each sprint's review and forecast is a page you edit in the visual editor. The page is also the email: Copy for Email puts it on the clipboard with the layout intact. The routine that drafts into it belongs to SSW's internal skills, so it is not in this repo.
 
 ## Start on Monday
 
